@@ -1,0 +1,54 @@
+{
+  "name": "@informatix8/tree-bios",
+  "version": "1.0.0",
+  "title": "Tree Bios",
+  "description": "Search Tree Library and Services",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:informatix8/tree-bios.git"
+  },
+  "author": "Mjr",
+  "contributors": [
+    "Mjr <mjr@informatix.io>"
+  ],
+  "license": "ISC",
+  "main": "dist/tree-bios.cjs.js",
+  "module": "dist/tree-bios.esm.js",
+  "browser": "dist/tree-bios.all.umd.js",
+  "dependencies": {
+    "inspire-tree": "^6.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "globby": "^10.0.1",
+    "jsdoc": "^3.6.3",
+    "jshint": "^2.10.3",
+    "mocha": "^6.2.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.26.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-filesize": "^6.2.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "serve": "^11.2.0",
+    "sinon": "^7.5.0",
+    "ub-jsdoc": "^1.7.3"
+  },
+  "scripts": {
+    "dev": "ln -sf ../node_modules public/node_modules; npm-run-all --parallel _start _watch",
+    "build": "rollup -c",
+    "_start": "serve public",
+    "_watch": "rollup -c -w",
+    "_lint_global": "jshint ./src",
+    "_lint": "node ./node_modules/jshint/dist/jshint.js ./src && jscs ./src",
+    "_jsdoc": "node ./node_modules/jsdoc/jsdoc.js -c jsdoc.conf.json",
+    "clean": "rimraf ./dist ./public/generated ./public/node_modules",
+    "deepclean": "npm run clean && rimraf ./node_modules"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
